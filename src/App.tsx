@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import axios, { AxiosResponse } from 'axios';
+import { useEffect } from 'react';
 import './App.css';
+import { urlPeople } from './endpoints';
 
 function App() {
+
+  useEffect(() => {
+    axios.get(urlPeople)
+    .then((response: AxiosResponse<any>) => {
+      console.log(response.data);
+    })
+  }, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>This is my first React App</h1>
+      <p>Communicating with ASP.Net Core.</p>
+    </>
   );
 }
 
